@@ -20,6 +20,7 @@ class EmployeeListVC : ViewController, UITableViewDelegate, UITableViewDataSourc
          
         filteredArray = employeeDetailArray
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
     }
     
     
@@ -71,23 +72,19 @@ class EmployeeListVC : ViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
         searchBar.text = ""
         filteredArray = employeeDetailArray
         employeeListTbl.reloadData()
+        searchBar.resignFirstResponder()
     }
-    }
+}
 
 extension UIImageView {
-
  public func imageFromServerURL(urlString: String, PlaceHolderImage:UIImage) {
-
         if self.image == nil{
               self.image = PlaceHolderImage
         }
-
         URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
-
             if error != nil {
                 print(error ?? "No Error")
                 return
@@ -96,7 +93,6 @@ extension UIImageView {
                 let image = UIImage(data: data!)
                 self.image = image
             })
-
         }).resume()
     }}
 
