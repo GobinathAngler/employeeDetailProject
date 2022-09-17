@@ -86,9 +86,10 @@ class ViewController: UIViewController {
                                         employeeContext.zipcode = zipcode
                                     }
                                     
-                                    if let website = address["website"] as? String {
-                                        employeeContext.website = website
-                                    }
+                                  
+                                }
+                                if let website = employeeObj["website"] as? String {
+                                    employeeContext.website = website
                                 }
                                 do {
                                     try context.save()
